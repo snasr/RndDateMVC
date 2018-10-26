@@ -1,0 +1,9 @@
+﻿
+@{
+    DateTime RndDate = ViewBag.RndDate;
+    int hoursDiff = (DateTime.Now - RndDate).Days * 24;
+}
+
+</br>
+<p>The difference between @RndDate and @DateTime.Now is @hoursDiff Hours </p>
+</br>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="toUpper">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parm1" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="toUpperResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="toUpperResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="toLower">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parm1" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="toLowerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="toLowerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="toUpperSoapIn">
+    <wsdl:part name="parameters" element="tns:toUpper" />
+  </wsdl:message>
+  <wsdl:message name="toUpperSoapOut">
+    <wsdl:part name="parameters" element="tns:toUpperResponse" />
+  </wsdl:message>
+  <wsdl:message name="toLowerSoapIn">
+    <wsdl:part name="parameters" element="tns:toLower" />
+  </wsdl:message>
+  <wsdl:message name="toLowerSoapOut">
+    <wsdl:part name="parameters" element="tns:toLowerResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TextWebServiceSoap">
+    <wsdl:operation name="toUpper">
+      <wsdl:input message="tns:toUpperSoapIn" />
+      <wsdl:output message="tns:toUpperSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="toLower">
+      <wsdl:input message="tns:toLowerSoapIn" />
+      <wsdl:output message="tns:toLowerSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TextWebServiceSoap" type="tns:TextWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="toUpper">
+      <soap:operation soapAction="http://tempuri.org/toUpper" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="toLower">
+      <soap:operation soapAction="http://tempuri.org/toLower" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TextWebServiceSoap12" type="tns:TextWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="toUpper">
+      <soap12:operation soapAction="http://tempuri.org/toUpper" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="toLower">
+      <soap12:operation soapAction="http://tempuri.org/toLower" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TextWebService">
+    <wsdl:port name="TextWebServiceSoap" binding="tns:TextWebServiceSoap">
+      <soap:address location="http://localhost:7493/TextWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TextWebServiceSoap12" binding="tns:TextWebServiceSoap12">
+      <soap12:address location="http://localhost:7493/TextWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
